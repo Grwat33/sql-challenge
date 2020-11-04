@@ -1,3 +1,4 @@
+--Create 6 Tables (Exported from ERD Model) and then Import CSVs
 CREATE TABLE "departments" (
     "dept_no" VARCHAR(4)   NOT NULL,
     "dept_name" VARCHAR(100)   NOT NULL,
@@ -79,8 +80,7 @@ SELECT
 	FROM employees
 	WHERE DATE_PART('year', hire_date) = 1986;
 
---List the manager of each department with the following information: 
---department number, department name, the manager's employee number, last name, first name.
+--List the manager of each department with the following information: department number, department name, the manager's employee number, last name, first name.
 SELECT 
 	departments.dept_no, 
 	departments.dept_name, 
@@ -91,6 +91,7 @@ FROM departments
 INNER JOIN dept_manager ON departments.dept_no=dept_manager.dept_no
 LEFT OUTER JOIN employees ON dept_manager.emp_no=employees.emp_no
 	
+
 --List the department of each employee with the following information: employee number, last name, first name, and department name.
 SELECT 
 	employees.emp_no,
@@ -102,6 +103,7 @@ SELECT
 	ON employees.emp_no = dept_emp.emp_no
 	INNER JOIN departments
 	ON dept_emp.dept_no = departments.dept_no
+
 --List first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B."
 SELECT
 	employees.first_name,
@@ -109,6 +111,7 @@ SELECT
 	employees.sex
 	FROM employees
 	WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
+
 --List all employees in the Sales department, including their employee number, last name, first name, and department name.
 SELECT
 	employees.emp_no,
@@ -121,6 +124,7 @@ SELECT
 	INNER JOIN departments
 	ON dept_emp.dept_no = departments.dept_no
 	WHERE dept_name = 'Sales';
+
 --List all employees in the Sales and Development departments, including their employee number, last name, first name, and department name.
 SELECT
 	employees.emp_no,
@@ -133,6 +137,7 @@ SELECT
 	INNER JOIN departments
 	ON dept_emp.dept_no = departments.dept_no
 	WHERE dept_name = 'Sales' OR dept_name = 'Development';
+
 --In descending order, list the frequency count of employee last names, i.e., how many employees share each last name.
 SELECT 
 employees.last_name,
