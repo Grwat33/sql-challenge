@@ -70,7 +70,6 @@ SELECT
 	FROM employees
 	LEFT JOIN salaries
 	ON employees.emp_no = salaries.emp_no
-	LIMIT 10
 
 --List first name, last name, and hire date for employees who were hired in 1986.
 SELECT
@@ -95,7 +94,12 @@ LEFT OUTER JOIN employees ON dept_manager.emp_no=employees.emp_no
 --List the department of each employee with the following information: employee number, last name, first name, and department name.
 
 --List first name, last name, and sex for employees whose first name is "Hercules" and last names begin with "B."
-
+SELECT
+	employees.first_name,
+	employees.last_name,
+	employees.sex
+	FROM employees
+	WHERE first_name = 'Hercules' AND last_name LIKE 'B%';
 --List all employees in the Sales department, including their employee number, last name, first name, and department name.
 
 --List all employees in the Sales and Development departments, including their employee number, last name, first name, and department name.
